@@ -88,3 +88,8 @@ variable "public_subnets_additional_tags" {
   default     = {}
   description = "Additional tags to be added to public subnets"
 }
+
+variable "subnet_public_cidr_blue" {
+  description = ""
+  type = string
+}

@@ -24,7 +24,8 @@ resource "aws_subnet" "public" {
   #  ceil(log(local.public_subnet_count * 2, 2)),
   #  local.public_subnet_count + count.index
   #)
-  cidr_block        = cidrsubnet("${split("/", var.cidr_block)[0]}/22", 2, count.index)
+  #cidr_block        = cidrsubnet("${split("/", var.cidr_block)[0]}/22", 2, count.index)
+  cidr_block        = cidrsubnet(var.subnet_public_cidr_blue, 2, count.index)
 
   map_public_ip_on_launch = var.map_public_ip_on_launch
 
