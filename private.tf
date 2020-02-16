@@ -29,8 +29,7 @@ resource "aws_subnet" "private" {
   cidr_block = cidrsubnet(
     var.subnet_private_cidr,
     2,
-    #count.index + local.private_subnet_index
-    count.index
+    count.index + local.private_subnet_index
   )
 
   tags = merge(
