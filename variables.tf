@@ -93,3 +93,8 @@ variable "subnet_public_cidr" {
   description = ""
   type = string
 }
+
+variable "subnet_private_cidr" {
+  description = ""
+  type = string
+}

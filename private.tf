@@ -24,7 +24,7 @@ resource "aws_subnet" "private" {
   #  ceil(log(local.private_subnet_count * 2, 2)),
   #  count.index
   #)
-  cidr_block = cidrsubnet(var.cidr_block, 4, count.index + 1)
+  cidr_block = cidrsubnet(var.subnet_private_cidr, 4, count.index + 1)
 
   tags = merge(
     module.private_label.tags,
