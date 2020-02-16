@@ -89,7 +89,7 @@ variable "public_subnets_additional_tags" {
   description = "Additional tags to be added to public subnets"
 }
 
-variable "subnet_public_cidr_blue" {
+variable "subnet_public_cidr" {
   description = ""
   type = string
 }
