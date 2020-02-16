@@ -19,11 +19,12 @@ resource "aws_subnet" "private" {
   vpc_id            = data.aws_vpc.default.id
   availability_zone = element(var.availability_zones, count.index)
 
-  cidr_block = cidrsubnet(
-    signum(length(var.cidr_block)) == 1 ? var.cidr_block : data.aws_vpc.default.cidr_block,
-    ceil(log(local.private_subnet_count * 2, 2)),
-    count.index
-  )
+  #cidr_block = cidrsubnet(
+  #  signum(length(var.cidr_block)) == 1 ? var.cidr_block : data.aws_vpc.default.cidr_block,
+  #  ceil(log(local.private_subnet_count * 2, 2)),
+  #  count.index
+  #)
+  cidr_block = cidrsubnet(var.cidr_block, 4, count.index)
 
   tags = merge(
     module.private_label.tags,
