@@ -11,7 +11,9 @@ module "private_label" {
 }
 
 locals {
-  private_subnet_count = var.max_subnet_count == 0 ? length(data.aws_availability_zones.available.names) : var.max_subnet_count
+  #private_subnet_count = var.max_subnet_count == 0 ? length(data.aws_availability_zones.available.names) : var.max_subnet_count
+  private_subnet_index = var.subnet_color == "green" ? 0 : 1
+
 }
 
 resource "aws_subnet" "private" {
@@ -24,7 +26,11 @@ resource "aws_subnet" "private" {
   #  ceil(log(local.private_subnet_count * 2, 2)),
   #  count.index
   #)
-  cidr_block = cidrsubnet(var.subnet_private_cidr, 4, count.index + 1)
+  cidr_block = cidrsubnet(
+    var.subnet_private_cidr,
+    2,
+    count.index + local.private_subnet_index
+  )
 
   tags = merge(
     module.private_label.tags,

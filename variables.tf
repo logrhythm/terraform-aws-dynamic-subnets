@@ -98,3 +98,9 @@ variable "subnet_private_cidr" {
   description = ""
   type = string
 }
+
+variable "subnet_color" {
+  description = "If it's a green deployment, this changes the index to get the cidrs right"
+  type = string
+  default = ""
+}
