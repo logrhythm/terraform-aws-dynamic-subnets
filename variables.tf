@@ -90,12 +90,12 @@ variable "public_subnets_additional_tags" {
 }
 
 variable "subnet_public_cidr" {
-  description = ""
+  description = "CIDR for the public subnet block"
   type = string
 }
 
 variable "subnet_private_cidr" {
-  description = ""
+  description = "CIDR for the private subnet block"
   type = string
 }
 
